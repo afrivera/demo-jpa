@@ -25,7 +25,8 @@ public class JpaDemoApplication implements CommandLineRunner {
 		// System.out.println(repo);
 		// guardar();
 		// buscarPorId();
-		modificar();
+		// modificar();
+		eliminar();
 	}
 
 	private void modificar(){
@@ -61,7 +62,9 @@ public class JpaDemoApplication implements CommandLineRunner {
 	}
 
 	private void eliminar(){
-		System.out.println("Eliminando un registro");
+		// System.out.println("Eliminando un registro");
+		int idCategoria = 1;
+		repo.deleteById(idCategoria);
 	}
 
 }
