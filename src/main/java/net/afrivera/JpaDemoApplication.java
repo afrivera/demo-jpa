@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication
@@ -26,7 +28,31 @@ public class JpaDemoApplication implements CommandLineRunner {
 		// guardar();
 		// buscarPorId();
 		// modificar();
-		eliminar();
+		// eliminar();
+		// contar();
+		// eliminartodo();
+		encontrarPorIds();
+	}
+
+	private void encontrarPorIds(){
+		List<Integer> ids = new LinkedList<>();
+		ids.add(1);
+		ids.add(4);
+		ids.add(10);
+		Iterable<Categoria> categorias =  repo.findAllById(ids);
+		for (Categoria cat : categorias){
+			System.out.println(cat);
+		}
+	}
+
+	private void eliminartodo(){
+		// se recomiend no usar con cientos de registros
+		repo.deleteAll();
+	}
+
+	private void contar(){
+		long cont = repo.count();
+		System.out.println("Total de Categorias: " + cont);
 	}
 
 	private void modificar(){
