@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Optional;
+
 @SpringBootApplication
 public class JpaDemoApplication implements CommandLineRunner {
 
@@ -21,7 +23,17 @@ public class JpaDemoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// este metodo es para que la app corra como una app cli
 		// System.out.println(repo);
-		guardar();
+		// guardar();
+		buscarPorId();
+	}
+
+	private void buscarPorId(){
+		Optional<Categoria> optional =  repo.findById(2);
+		if(optional.isPresent()){
+			System.out.println(optional.get());
+		} else {
+			System.out.println("Categoria no encontrada");
+		}
 	}
 
 	private void guardar(){
