@@ -24,7 +24,21 @@ public class JpaDemoApplication implements CommandLineRunner {
 		// este metodo es para que la app corra como una app cli
 		// System.out.println(repo);
 		// guardar();
-		buscarPorId();
+		// buscarPorId();
+		modificar();
+	}
+
+	private void modificar(){
+		Optional<Categoria> optional =  repo.findById(1);
+		if(optional.isPresent()){
+			Categoria catImp = optional.get();
+			catImp.setNombre("Ing. de Software");
+			catImp.setDescripcion("Desarrollo de Sistemas");
+			repo.save(catImp);
+			System.out.println(catImp);
+		} else {
+			System.out.println("Categoria no encontrada");
+		}
 	}
 
 	private void buscarPorId(){
